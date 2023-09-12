@@ -887,6 +887,30 @@ class TestCaseService extends BaseService {
     }
 
     /**
+     *
+     * @param testPlanId
+     * @param testCaseExternalId
+     * @param user
+     * @param buildName
+     * @param platformId
+     * @throws TestLinkAPIException
+     */
+    protected void assignTestCaseExecutionTask(Integer testPlanId, String testCaseExternalId, String user,
+                                               String buildName, Integer platformId) throws TestLinkAPIException {
+        try {
+            Map<String, Object> executionData = new HashMap<>();
+            executionData.put(TestLinkParams.TEST_PLAN_ID.toString(), testPlanId);
+            executionData.put(TestLinkParams.TEST_CASE_EXTERNAL_ID.toString(), testCaseExternalId);
+            executionData.put(TestLinkParams.USER.toString(), user);
+            executionData.put(TestLinkParams.BUILD_NAME.toString(), buildName);
+            executionData.put(TestLinkParams.PLATFORM_ID.toString(), platformId);
+            this.executeXmlRpcCall(TestLinkMethods.ASSIGN_TEST_CASE_EXECUTION_TASK.toString(), executionData);
+        } catch (XmlRpcException xmlrpcex) {
+            throw new TestLinkAPIException("Error assigning test case execution task: " + xmlrpcex.getMessage(), xmlrpcex);
+        }
+    }
+
+    /**
      * @param testcaseKeywordsMap key - testcase externalId, value - list of keywords
      *
      * @return

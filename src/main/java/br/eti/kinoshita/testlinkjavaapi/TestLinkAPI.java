@@ -1222,6 +1222,21 @@ public class TestLinkAPI {
         this.testCaseService.assignTestCaseExecutionTask(testPlanId, testCaseExternalId, user, buildName);
     }
 
+    /**
+     * Assign user to execute Test Case in Test Plan
+     *
+     * @param testPlanId test plan ID
+     * @param testCaseExternalId test case external ID
+     * @param user user
+     * @param buildName build name
+     * @param platformId platform ID
+     * @throws TestLinkAPIException if the service returns an error
+     */
+    public void assignTestCaseExecutionTask(Integer testPlanId, String testCaseExternalId, String user,
+                                            String buildName, Integer platformId) throws TestLinkAPIException {
+        this.testCaseService.assignTestCaseExecutionTask(testPlanId, testCaseExternalId, user, buildName, platformId);
+    }
+
     /* XX Requirements Specification operations XX */
 
     /**
