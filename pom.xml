@@ -306,10 +306,18 @@
 			<activation>
 			</activation>
 			<distributionManagement>
-				<site>
-					<id>testlink-java-api-github-site</id>
-					<url>gitsite:git@github.com/kinow/testlink-java-api.git</url>
-				</site>
+<!--				<site>-->
+<!--					<id>testlink-java-api-github-site</id>-->
+<!--					<url>gitsite:git@github.com/kinow/testlink-java-api.git</url>-->
+<!--				</site>-->
+                <repository>
+                    <id>local-repo</id>
+                    <url>file://${project.basedir}/target</url>
+                </repository>
+                <snapshotRepository>
+                    <id>local-snapshot-repo</id>
+                    <url>file://${project.basedir}/target</url>
+                </snapshotRepository>
 			</distributionManagement>
 		</profile>
 	</profiles>
